@@ -1,21 +1,47 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Prism from "prismjs";
 import "prismjs/themes/prism-tomorrow.css";
+import "prismjs/components/prism-javascript";
+import "prismjs/components/prism-typescript";
+import "prismjs/components/prism-jsx";
+import "prismjs/components/prism-tsx";
+import "prismjs/components/prism-css";
+import "prismjs/components/prism-markup";
 
 export default function CodeBlock({ code }: { code: string }) {
     const [isCopied, setIsCopied] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
+    const codeRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
-        Prism.highlightAll();
+        if (codeRef.current) {
+            Prism.highlightElement(codeRef.current);
+        }
         setIsVisible(true);
-    }, []);
+    }, [code]);
 
     const copyToClipboard = () => {
         navigator.clipboard.writeText(code);
         setIsCopied(true);
         setTimeout(() => setIsCopied(false), 2000);
+    };
+
+    // Detect language from code
+    const detectLanguage = () => {
+        if (code.includes("import") || code.includes("export") || code.includes("const ") || code.includes("function")) {
+            if (code.includes("from 'react'") || code.includes("jsx") || code.includes("tsx")) {
+                return "language-jsx";
+            }
+            return "language-javascript";
+        }
+        if (code.includes("<") && code.includes(">")) {
+            return "language-markup";
+        }
+        if (code.includes("{") && code.includes("}") && code.includes(":")) {
+            return "language-css";
+        }
+        return "language-javascript";
     };
 
     return (
@@ -45,7 +71,7 @@ export default function CodeBlock({ code }: { code: string }) {
                 </button>
             </div>
             <pre className="p-4 bg-gray-900 text-white text-sm overflow-x-auto">
-                <code className="language-js">{code}</code>
+                <code ref={codeRef} className={detectLanguage()}>{code}</code>
             </pre>
         </div>
     );

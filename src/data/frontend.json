@@ -1,14 +1,1 @@
-[
-  {
-    "id": 1,
-    "question": "React me useEffect aur useLayoutEffect me kya difference hai?",
-    "answer": "useEffect async hota hai, render ke baad run hota hai. useLayoutEffect sync hota hai aur render ke turant baad run hota hai.",
-    "code": "useEffect(() => { console.log('Runs after paint') }, []);\nuseLayoutEffect(() => { console.log('Runs before paint') }, []);"
-  },
-  {
-    "id": 2,
-    "question": "Virtual DOM kya hota hai?",
-    "answer": "Virtual DOM ek in-memory representation hota hai real DOM ka, jo React updates ko optimize karta hai.",
-    "code": ""
-  }
-]
+[]

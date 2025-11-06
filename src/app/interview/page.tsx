@@ -2,28 +2,67 @@ import Link from "next/link";
 
 const categories = [
     {
+        name: "MERN Stack",
+        description: "MongoDB, Express, React, Node.js",
+        icon: "⚛️",
+        color: "from-blue-500 to-cyan-500",
+        href: "/interview/mern"
+    },
+    {
+        name: "MEAN Stack",
+        description: "MongoDB, Express, Angular, Node.js",
+        icon: "🅰️",
+        color: "from-red-500 to-pink-500",
+        href: "/interview/mean"
+    },
+    {
+        name: "Vue.js",
+        description: "Progressive JavaScript Framework",
+        icon: "🟢",
+        color: "from-green-500 to-emerald-500",
+        href: "/interview/vuejs"
+    },
+    {
+        name: "Next.js",
+        description: "React Framework for Production",
+        icon: "▲",
+        color: "from-gray-800 to-gray-600",
+        href: "/interview/nextjs"
+    },
+    {
         name: "Frontend",
-        description: "HTML, CSS, JavaScript, React and more",
+        description: "React, JavaScript, Modern Frontend",
         icon: "💻",
-        color: "from-blue-500 to-cyan-500"
+        color: "from-indigo-500 to-purple-500",
+        href: "/interview/frontend"
     },
     {
         name: "Backend",
-        description: "Node.js, Databases, API Design and more",
+        description: "Node.js, APIs, Databases",
         icon: "⚙️",
-        color: "from-purple-500 to-pink-500"
+        color: "from-purple-500 to-pink-500",
+        href: "/interview/backend"
     },
     {
-        name: "Fullstack",
-        description: "End-to-end development concepts",
-        icon: "🌐",
-        color: "from-amber-500 to-orange-500"
+        name: "HTML",
+        description: "HyperText Markup Language",
+        icon: "📄",
+        color: "from-orange-500 to-red-500",
+        href: "/interview/html"
     },
     {
-        name: "UI Developer",
-        description: "Design systems, accessibility, and UI patterns",
+        name: "CSS",
+        description: "Styling and Layout",
         icon: "🎨",
-        color: "from-emerald-500 to-teal-500"
+        color: "from-blue-400 to-indigo-500",
+        href: "/interview/css"
+    },
+    {
+        name: "UI/UX",
+        description: "Design Systems & Accessibility",
+        icon: "✨",
+        color: "from-emerald-500 to-teal-500",
+        href: "/interview/ui-ux"
     },
 ];
 
@@ -39,11 +78,11 @@ export default function InterviewPage() {
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                 {categories.map((category, index) => (
                     <Link
                         key={category.name}
-                        href={`/interview/${category.name.toLowerCase()}`}
+                        href={category.href}
                         className="p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 group relative overflow-hidden"
                         style={{ animationDelay: `${index * 0.1}s` }}
                     >

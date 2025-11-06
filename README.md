@@ -1,37 +1,143 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Interview Preparation Website
+
+A modern, responsive interview preparation platform for Full Stack Developers with dynamic question fetching from multiple third-party APIs.
+
+## Features
+
+- 🎯 **9 Tech Stack Categories**: MERN, MEAN, Vue.js, Next.js, Frontend, Backend, HTML, CSS, UI/UX
+- 🔍 **Search & Filter**: Real-time search and difficulty-based filtering
+- 📚 **Multiple Sources**: Fetches questions from Stack Overflow, GitHub, GeeksforGeeks, InterviewBit, and more
+- 🔖 **Bookmarking**: Save favorite questions for later
+- 👤 **User Authentication**: Login/Signup system for progress tracking
+- 💻 **Code Examples**: Syntax-highlighted code blocks with copy functionality
+- 🎨 **Modern UI**: Beautiful gradient theme with smooth animations
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ 
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd Preparation
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. (Optional) Configure API keys in `.env.local`:
+```env
+GITHUB_TOKEN=your_github_token_here
+NEXT_PUBLIC_ENABLE_GEEKSFORGEEKS=false
+NEXT_PUBLIC_ENABLE_INTERVIEWBIT=false
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Run the development server:
+```bash
+npm run dev
+```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## API Integration
+
+This project fetches interview questions from multiple third-party APIs:
+
+- ✅ **Stack Overflow API** - Public API, no authentication required (Priority 1)
+- ✅ **Google Custom Search API** - Searches the web for interview questions (Priority 2)
+- ✅ **LeetCode API** - GraphQL API for coding problems (Priority 3)
+- ✅ **GitHub API** - Searches repositories for interview questions (Priority 4)
+- ⚠️ **GeeksforGeeks** - Placeholder (requires scraping service)
+- ⚠️ **InterviewBit** - Placeholder (requires scraping service)
+
+**The system is fully API-driven** - all questions are fetched from third-party APIs. No static data is used.
+
+For detailed API setup instructions, see [API_SETUP.md](./API_SETUP.md).
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── api/              # Next.js API routes (proxy endpoints)
+│   ├── interview/        # Interview question pages
+│   └── page.tsx          # Home page
+├── components/           # React components
+├── lib/
+│   ├── api/              # API service modules
+│   └── getQuestions.ts   # Data fetching logic
+├── data/                 # Static JSON fallback data
+└── types/                # TypeScript type definitions
+```
+
+## Tech Stack
+
+- **Framework**: Next.js 15 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Code Highlighting**: Prism.js
+- **State Management**: React Hooks
+
+## Features in Detail
+
+### Search & Filter
+- Real-time search across questions, answers, and tags
+- Filter by difficulty: Beginner, Intermediate, Advanced
+- Category-based browsing
+
+### Bookmarking
+- Save questions for later review
+- Persistent storage per user
+- Visual bookmark indicators
+
+### Authentication
+- Simple login/signup system
+- User progress tracking (via localStorage)
+- Session management
+
+### Code Examples
+- Syntax-highlighted code blocks
+- Copy-to-clipboard functionality
+- Multiple language support
+
+## API Endpoints
+
+### `/api/questions`
+Main endpoint that aggregates questions from all sources.
+
+**Query Parameters:**
+- `category`: Category name (e.g., "mern", "react")
+- `difficulty`: Optional difficulty filter
+- `limit`: Maximum number of questions (default: 20)
+- `sources`: Comma-separated list of sources
+
+**Example:**
+```
+GET /api/questions?category=mern&difficulty=Intermediate&limit=30
+```
+
+## Caching
+
+API responses are cached in-memory for 30 minutes to reduce API calls and improve performance.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is open source and available under the MIT License.
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# Preparation
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [Stack Overflow API](https://api.stackexchange.com/docs)
+- [GitHub API](https://docs.github.com/en/rest)

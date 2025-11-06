@@ -10,10 +10,15 @@ export default function Home() {
   }, []);
 
   const categories = [
-    { name: "Frontend", href: "/interview/frontend", color: "from-blue-500 to-cyan-500", icon: "💻" },
-    { name: "Backend", href: "/interview/backend", color: "from-purple-500 to-pink-500", icon: "⚙️" },
-    { name: "Fullstack", href: "/interview/fullstack", color: "from-amber-500 to-orange-500", icon: "🌐" },
-    { name: "UI/UX", href: "/interview/ui", color: "from-emerald-500 to-teal-500", icon: "🎨" },
+    { name: "MERN Stack", href: "/interview/mern", color: "from-blue-500 to-cyan-500", icon: "⚛️", description: "MongoDB, Express, React, Node.js" },
+    { name: "MEAN Stack", href: "/interview/mean", color: "from-red-500 to-pink-500", icon: "🅰️", description: "MongoDB, Express, Angular, Node.js" },
+    { name: "Vue.js", href: "/interview/vuejs", color: "from-green-500 to-emerald-500", icon: "🟢", description: "Progressive JavaScript Framework" },
+    { name: "Next.js", href: "/interview/nextjs", color: "from-gray-800 to-gray-600", icon: "▲", description: "React Framework for Production" },
+    { name: "Frontend", href: "/interview/frontend", color: "from-indigo-500 to-purple-500", icon: "💻", description: "React, JavaScript, Modern Frontend" },
+    { name: "Backend", href: "/interview/backend", color: "from-purple-500 to-pink-500", icon: "⚙️", description: "Node.js, APIs, Databases" },
+    { name: "HTML", href: "/interview/html", color: "from-orange-500 to-red-500", icon: "📄", description: "HyperText Markup Language" },
+    { name: "CSS", href: "/interview/css", color: "from-blue-400 to-indigo-500", icon: "🎨", description: "Styling and Layout" },
+    { name: "UI/UX", href: "/interview/ui-ux", color: "from-emerald-500 to-teal-500", icon: "✨", description: "Design Systems & Accessibility" },
   ];
 
   return (
@@ -77,10 +82,7 @@ export default function Home() {
                 {category.name}
               </h3>
               <p className="text-gray-600 text-sm">
-                {category.name === "Frontend" && "HTML, CSS, JS, React"
-                  || category.name === "Backend" && "Node, Databases, APIs"
-                  || category.name === "Fullstack" && "End-to-end development"
-                  || "Design systems, UI patterns"}
+                {category.description}
               </p>
               <div className="mt-4 text-blue-600 font-medium flex items-center opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                 Explore

@@ -28,7 +28,7 @@ export default function Footer() {
                         © {new Date().getFullYear()} Interview Prep Portal. All rights reserved.
                     </p>
                     <p className="text-gray-500 text-xs mt-1">
-                        Developed by <span className="font-semibold text-gray-700">Abinash Sinha</span> — Fullstack Developer
+                        Developed by <span className="font-semibold text-orange-700">Abinash Sinha</span> — Fullstack Developer
                     </p>
                 </div>
             </div>

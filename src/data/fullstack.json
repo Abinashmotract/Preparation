@@ -1,7 +1,1 @@
-[
-  {
-    "id": 1,
-    "question": "JWT ka use authentication me kaise hota hai?",
-    "answer": "JWT ek signed token hota hai jo client aur server ke beech authentication ke liye pass hota hai."
-  }
-]
+[]
